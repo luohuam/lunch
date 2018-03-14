@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+		p,#eat{font-size: 50px;text-align: center;margin-top: 50px;font-weight: bolder;}
+    </style>
+</head>
+<body>
+	<p>今天中午吃啥？</p>
+    <div id="eat"></div>
+    <div id="aa"></div> 
+</body>
+<script type="text/javascript">
+var arr = ["吉祥混沌","兰州拉面","浏阳蒸菜","味立方","米粉","蛋炒饭","盖浇饭","冒菜","麻辣烫","黄焖鸡","重庆小面"];
+var color = ["red","orange","yelow","green","cyan","blue","purple","pink","brown","black"];
+var arr_len = arr.length - 2;
+var color_len = color.length - 2;
+var fun = setInterval(function(){
+	var arr_num = Math.round(Math.random()*arr_len+1);
+	var arr_res = arr[arr_num];
+	document.getElementById('eat').innerHTML = arr_res;
+
+	var color_num = Math.round(Math.random()*color_len+1);
+	var color_res = color[color_num];
+	document.getElementById('eat').style.color = color_res;
+},100);
+document.onclick=function(){
+	clearInterval(fun);
+};
+</script>
+</html>
