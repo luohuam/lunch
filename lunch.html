@@ -1,31 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
     <style type="text/css">
 	p,#eat{font-size: 50px;text-align: center;margin-top: 50px;font-weight: bolder;}
+	.btn{margin: 80px auto;width:80px;border: 1px solid #ccc;border-radius: 5px;background: #80BCEB;color: #fff;text-align: center;line-height: 30px;}
+	.btn:hover{background: #1C6198;}
     </style>
 </head>
 <body>
-	<p>今天中午吃啥？</p>
+    <p>今天中午吃啥？</p>
     <div id="eat"></div>
+    <div class="btn">重 选</div>
 </body>
 <script type="text/javascript">
-var arr = ["吉祥混沌","兰州拉面","浏阳蒸菜","味立方","米粉","蛋炒饭","盖浇饭","冒菜","麻辣烫","黄焖鸡","重庆小面"];
+var arr = ["吉祥混沌","兰州拉面","浏阳蒸菜","快餐","米粉","蛋炒饭","盖浇饭","冒菜","麻辣烫","黄焖鸡","重庆小面"];
 var color = ["red","orange","yelow","green","cyan","blue","purple","pink","brown","black"];
 var arr_len = arr.length - 2;
 var color_len = color.length - 2;
-var fun = setInterval(function(){
-	var arr_num = Math.round(Math.random()*arr_len+1);
-	var arr_res = arr[arr_num];
-	document.getElementById('eat').innerHTML = arr_res;
-
-	var color_num = Math.round(Math.random()*color_len+1);
-	var color_res = color[color_num];
-	document.getElementById('eat').style.color = color_res;
-},100);
+var time;
+function fun(){
+    time = setInterval(function(){
+        var arr_num = Math.round(Math.random()*arr_len+1);
+        var arr_res = arr[arr_num];
+        document.getElementById('eat').innerHTML = arr_res;
+        var color_num = Math.round(Math.random()*color_len+1);
+        var color_res = color[color_num];
+        document.getElementById('eat').style.color = color_res;
+    },100);
+}
+fun();
 document.onclick=function(){
-	clearInterval(fun);
+    clearInterval(time);
 };
+document.getElementsByClassName('btn')[0].onclick=function(){
+    clearInterval(time);
+    setTimeout(function(args) {
+        fun();
+    }, 100)
+}
 </script>
 </html>
